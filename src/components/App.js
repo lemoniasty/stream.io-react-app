@@ -1,7 +1,4 @@
 import React from 'react';
-
-// Step 1
-//  Import BrowserRouter, Route and Link components to App component.
 import {BrowserRouter, Route} from "react-router-dom";
 import StreamCreate from './streams/StreamCreate';
 import StreamEdit from './streams/StreamEdit';
@@ -11,9 +8,6 @@ import StreamShow from './streams/StreamShow';
 import Header from './Header'
 
 const App = () => {
-    // Step 2
-    //  Implement BrowseRouter component and define routes by using Route
-    //  component.
     return (
         <div className="ui container">
             <BrowserRouter>
