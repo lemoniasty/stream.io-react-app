@@ -15,6 +15,6 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, isSignedIn: false, userId: null};
 
         default:
-            return action;
+            return state;
     }
 };

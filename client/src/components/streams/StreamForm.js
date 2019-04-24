@@ -1,12 +1,7 @@
 import React from 'react';
-// Step 3
-//  Import helpers from the redux-form library.
-//  Field is a component from the redux-form library
-//  reduxForm has exact functionality as connect() function. It calls actions
-//  creators and maps a state from a redux store into props to given components.
 import {Field, reduxForm} from "redux-form";
 
-class StreamCreate extends React.Component {
+class StreamForm extends React.Component {
 
     // Show error on the screen.
     renderError({error, touched}) {
@@ -19,9 +14,6 @@ class StreamCreate extends React.Component {
         }
     }
 
-    // Step 6
-    //  Create proper input for Field component.
-    //  Argument named "meta" is a result of the validation process
     renderInput = ({input, label, meta}) => {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
 
@@ -42,20 +34,17 @@ class StreamCreate extends React.Component {
         );
     };
 
-    // Step 7
-    //  Handle form submit event.
-    onSubmit(formValues) {
-        console.log(formValues);
-    }
+    onSubmit = (formValues) => {
+        // Step 5
+        //  Perform API request via callback passed by props.
+        this.props.onSubmit(formValues);
+    };
 
     render() {
         return (
             // Use handleSubmit() method from the redux-form library to pass
             // a handler for submitting method used by this component.
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-                {/*Step 5
-                    Attach field to the form with a bunch of the props and pass
-                    a method which creates a component*/}
                 <Field
                     name="title"
                     component={this.renderInput}
@@ -71,8 +60,6 @@ class StreamCreate extends React.Component {
     }
 }
 
-// Step 8
-//  Define validation method.
 const validate = (formValues) => {
     const errors = {};
 
@@ -92,12 +79,10 @@ const validate = (formValues) => {
     return errors;
 };
 
-// Step 4
-//  Use reduxForm instead connect()!!!!!!!!!
-//  We passing only a configuration object as a param of the reduxForm function.
+// Configure reduxForm library.
 export default reduxForm({
     // Attach name of the form.
-    form: 'streamCreate',
-    // Wire-up validation function with the form (Step 8).
+    form: 'streamForm',
+    // Wire-up validation function with the form
     validate: validate
-})(StreamCreate);
+})(StreamForm);

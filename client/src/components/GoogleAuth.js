@@ -1,6 +1,3 @@
-// Step 2
-//  Let's define GoogleAuth component, which will be responsible for
-//  authentication via Google OAuth API.
 import React from 'react';
 import {connect} from "react-redux";
 import {signIn, signOut} from "../actions";
@@ -8,8 +5,6 @@ import {signIn, signOut} from "../actions";
 class GoogleAuth extends React.Component {
 
     componentDidMount() {
-        // Step 4
-        //  Load necessary libraries via Google API library.
         window.gapi.load('client:auth', () => {
             // Client library has been downloaded successfully.
             // Let's init the OAuth client library.
