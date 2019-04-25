@@ -63,17 +63,20 @@ export const editStream = (id, formValues) => async dispatch => {
         payload: response.data
     });
 
-
     // Do some programmatic navigation to get the user back to the root route.
     // We will use our internal history object.
     history.push('/');
 };
 
 export const deleteStream = id => async dispatch => {
-    await streams.delete(`/stream/${id}`);
+    await streams.delete(`/streams/${id}`);
 
     dispatch({
         type: DELETE_STREAM,
         payload: id
     });
+
+    // Do some programmatic navigation to get the user back to the root route.
+    // We will use our internal history object.
+    history.push('/');
 };
